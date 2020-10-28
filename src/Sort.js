@@ -14,6 +14,17 @@ export default class Sort extends React.Component {
                     <option value="swarm">Swarm</option>
                     <option value="keen-eye">Keen Eye</option>
                 </select>
+                <select onChange={this.props.handleChangeHidden}>
+                    <option value="">Show All Hidden Abilities</option>
+                    <option value="chlorophyll">Chlorophyll</option>
+                    <option value="solar-power">Solar Power</option>
+                    <option value="rain-dish">Rain Dish</option>
+                    <option value="run-away">Run Away</option>
+                    <option value="NA">None</option>
+                    <option value="sniper">Sniper</option>
+                    <option value="big-pecks">Big Pecks</option>
+                </select>
+
             </div>
         )
     }

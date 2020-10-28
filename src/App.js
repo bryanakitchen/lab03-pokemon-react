@@ -8,6 +8,7 @@ import Sort from './Sort.js';
 export default class App extends React.Component {
   state = {
       ability: '',
+      hidden: '',
   }
   
   handleChangeAbility = (e) => {
@@ -15,13 +16,19 @@ export default class App extends React.Component {
         ability: e.target.value,
       })
   }
+
+  handleChangeHidden = (e) => {
+    this.setState({
+      hidden: e.target.value,
+    })
+}
   
   render() {
     return (
       <div>
         <Header />
-        <Sort handleChangeAbility={this.handleChangeAbility} />
-        <PokeList pokemonProp={pokemonData} abilityProp={this.state.ability}/>
+        <Sort handleChangeAbility={this.handleChangeAbility} handleChangeHidden={this.handleChangeHidden} />
+        <PokeList pokemonProp={pokemonData} abilityProp={this.state.ability} hiddenAbilityProp={this.state.hidden}/>
       </div>
     )
   }
