@@ -1,16 +1,27 @@
 import React from 'react'
 import './App.css';
-import pokemon from './Data';
 import Header from './Header.js';
 import PokeList from './PokeList.js';
 import pokemonData from './Data.js';
+import Sort from './Sort.js';
 
 export default class App extends React.Component {
+  state = {
+      ability: '',
+  }
+  
+  handleChangeAbility = (e) => {
+      this.setState({
+        ability: e.target.value,
+      })
+  }
+  
   render() {
     return (
       <div>
         <Header />
-        <PokeList pokemonProp={pokemonData}/>
+        <Sort handleChangeAbility={this.handleChangeAbility} />
+        <PokeList pokemonProp={pokemonData} abilityProp={this.state.ability}/>
       </div>
     )
   }
