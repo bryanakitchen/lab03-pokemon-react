@@ -24,7 +24,6 @@ export default class Sort extends React.Component {
                     <option value="sniper">Sniper</option>
                     <option value="big-pecks">Big Pecks</option>
                 </select>
-
             </div>
         )
     }

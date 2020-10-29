@@ -3,8 +3,11 @@ import React from 'react'
 export default class SearchBar extends React.Component {
     render() {
         return (
-            <div>
-                 {/* Searchbar component (input and submit button) that takes a callback to manage App.js state (successfully filters pokemon on the screen) */}
+            <div className="search-bar">
+                 <form onSubmit={this.props.handleSubmit}>
+                     <input type="text" onChange={this.props.handleChange} />
+                     <button>Search</button>
+                 </form>
             </div>
         )
     }

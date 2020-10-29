@@ -54,3 +54,17 @@ h1 {
 .picture {
   width: 200px;
 }
+
+.drop-down {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
