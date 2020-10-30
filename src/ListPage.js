@@ -9,46 +9,47 @@ import fetch from 'superagent';
 
 export default class ListPage extends React.Component {
   state = {
-      ability: '',
-      hidden: '',
-      submit: '',
-      change: '',
+      sort1: '',
+      sort2: '',
+      textChange: '',
       pokeData: [],
   }
   
-    // fetchPokemon 
-
-
-  componentDidMount = async () => {
+  fetchPokemon = async () => {
     const response = await fetch.get('https://alchemy-pokedex.herokuapp.com/api/pokedex');
-    console.log(response.body.results)
+    // console.log(response.body.results)
     this.setState({ pokeData: response.body.results });
   }
 
-  handleChangeAbility = (e) => {
-      this.setState({
-        ability: e.target.value,
+  componentWillMount = async () => {
+    this.fetchPokemon();
+  }
+
+  handleSort1 = (e) => {
+    this.setState({
+        sort1: e.target.value,
       })
   }
 
-  handleChangeHidden = (e) => {
+  handleSort2 = (e) => {
       this.setState({
-        hidden: e.target.value,
+        sort2: e.target.value,
       })
   }
 
   handleSubmit = (e) => {
-    e.preventDefault()  
-    this.setState({
-        submit: this.state.change,
-// submit: this.state.change because that is the state we want to show and stop at.
-      })
+    this.fetchPokemon();
+    // e.preventDefault()  
+    // this.setState({
+    //     submit: this.state.textChange,
+// submit: this.state.textChange because that is the state we want to show and stop at.
+      // })
   }
 
   handleChange = (e) => {
-      e.preventDefault()  
+      // e.preventDefault()  
       this.setState({
-        change: e.target.value,
+        textChange: e.target.value,
       })
   }
 
@@ -61,21 +62,23 @@ export default class ListPage extends React.Component {
         <Link to="/Search" className="links" >Search Page</Link>
 
         <Sort 
-        handleChangeAbility={this.handleChangeAbility} 
-        handleChangeHidden={this.handleChangeHidden} />
+        handleSort1={this.handleSort1} 
+        handleSort2={this.handleSort2} />
 
         <SearchBar 
-        handleSubmit={this.handleSubmit} handleChange={this.handleChange} pokeData={this.state.pokeData} />
+        handleSubmit={this.handleSubmit} handleChange={this.handleChange}  />
 
         <PokeList 
         pokeData={this.state.pokeData} 
-        abilityProp={this.state.ability} 
-        hiddenAbilityProp={this.state.hidden} 
-        submitProp={this.state.submit} />
+        sort1={this.state.booger1} 
+        sort2={this.state.booger2} 
+        changeProp={this.state.textChange} />
       </div>
     )
   }
 }
+
+/* took out of searchBar: pokeData={this.state.pokeData} */
 
 // changeProp={this.state.change}
 
