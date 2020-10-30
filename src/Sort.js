@@ -4,8 +4,8 @@ export default class Sort extends React.Component {
     render() {
         return (
             <div className="drop-down">
-                <select onChange={this.props.handleChangeAbility}>
-                    <option value="">Show All Abilities</option>
+                <select onChange={this.props.handleChar}>
+                    <option value="">Show All Characteristics</option>
                     <option value="pokemon">Name</option>
                     <option value="base_experience">Base Experience</option>
                     <option value="ability_1">Ability</option>
@@ -14,7 +14,7 @@ export default class Sort extends React.Component {
                     <option value="height">Height</option>
                     <option value="weight">Weight</option>
                 </select>
-                <select onChange={this.props.handleChangeHidden}>
+                <select onChange={this.props.handleOrder}>
                     <option value="">Order</option>
                     <option value="asc">Ascending</option>
                     <option value="desc">Descending</option>

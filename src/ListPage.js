@@ -9,8 +9,8 @@ import fetch from 'superagent';
 
 export default class ListPage extends React.Component {
   state = {
-      ability: '',
-      hidden: '',
+      characteristic: '',
+      order: '',
       submit: '',
       change: '',
       pokeData: [],
@@ -18,7 +18,7 @@ export default class ListPage extends React.Component {
   
   fetchPokemon = async () => {
     console.log(this.state.change)
-      const response = await fetch.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.change}&sort=${this.state.ability}&direction=${this.state.hidden}`);
+      const response = await fetch.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.change}&sort=${this.state.characteristic}&direction=${this.state.order}`);
       // if one state is empty, it will just ignore or show all
       // console.log(response.body.results)
       this.setState({ pokeData: response.body.results });
@@ -28,20 +28,18 @@ export default class ListPage extends React.Component {
     this.fetchPokemon();
   }
 
-  handleChangeAbility = (e) => {
-      this.setState({
-        ability: e.target.value,
+  handleCharPoke = async (e) => {
+    await this.setState({
+        characteristic: e.target.value,
       })
-      console.log(e.target.value);
-
+    await this.fetchPokemon();
   }
 
-  handleChangeHidden = (e) => {
-      this.setState({
-        hidden: e.target.value,
+  handleOrderPoke = async (e) => {
+    await this.setState({
+        order: e.target.value,
       })
-      console.log(e.target.value);
-
+    await this.fetchPokemon();
   }
 
   handleSubmit = (e) => {
@@ -58,7 +56,6 @@ export default class ListPage extends React.Component {
       this.setState({
         change: e.target.value,
       })
-      console.log(e.target.value);
   }
 
   render() {
@@ -70,16 +67,14 @@ export default class ListPage extends React.Component {
         <Link to="/Search" className="links" >Search Page</Link>
 
         <Sort 
-        handleChangeAbility={this.handleChangeAbility} 
-        handleChangeHidden={this.handleChangeHidden} />
+        handleChar={this.handleCharPoke} 
+        handleOrder={this.handleOrderPoke} />
 
         <SearchBar 
         handleSubmit={this.handleSubmit} handleChange={this.handleChange} pokeData={this.state.pokeData} />
 
         <PokeList 
         pokeData={this.state.pokeData} 
-        abilityProp={this.state.ability} 
-        hiddenAbilityProp={this.state.hidden} 
         submitProp={this.state.submit} />
       </div>
     )
