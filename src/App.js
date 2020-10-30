@@ -5,8 +5,8 @@ import {
     Switch,
 } from 'react-router-dom';
 import './App.css';
-import Main from './Main.js';
-import SearchPage from './SearchPage.js';
+import Home from './Home';
+import ListPage from './ListPage.js';
 
 export default class App extends Component {
     render() {
@@ -17,12 +17,12 @@ export default class App extends Component {
                         <Route 
                             path="/" 
                             exact
-                            render={(routerProps) => <Main {...routerProps} />} 
+                            render={(routerProps) => <Home {...routerProps} />} 
                         />
                         <Route 
-                            path="/SearchPage" 
+                            path="/Search" 
                             exact
-                            render={(routerProps) => <SearchPage {...routerProps} />} 
+                            render={(routerProps) => <ListPage {...routerProps} />} 
                         />
                     </Switch>
                 </Router>
