@@ -10,7 +10,7 @@ import fetch from 'superagent';
 export default class PokemonDetail extends React.Component {
   state = {
     //   pokemon: props.match.params.pokemonProp,
-      pokemon: '',
+      pokeData: '',
   }
   
   componentDidMount = async () => {
