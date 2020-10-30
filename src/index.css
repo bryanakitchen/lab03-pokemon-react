@@ -84,3 +84,10 @@ h1 {
   font-size: 14px;
   margin: 2px;
 }
+
+.page-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}

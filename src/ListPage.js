@@ -15,14 +15,18 @@ export default class ListPage extends React.Component {
       change: '',
       pokeData: [],
       pageNumber: 1,
+      loading: false,
   }
   
   fetchPokemon = async () => {
-    console.log(this.state.change)
+      this.setState({ loading: true })
       const response = await fetch.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.change}&sort=${this.state.characteristic}&direction=${this.state.order}&page=${this.state.pageNumber}&perPage=20`);
       // if one state is empty, it will just ignore or show all
-      // console.log(response.body.results)
-      this.setState({ pokeData: response.body.results });
+      this.setState({ 
+        pokeData: response.body.results,
+        loading: false,
+        count: response.body.count 
+      });
   }
 
   componentDidMount = async () => {
@@ -58,9 +62,16 @@ export default class ListPage extends React.Component {
       })
   }
 
+  handleDecrement = async (e) => {
+    await this.setState({
+      pageNumber: this.state.pageNumber - 1,
+    })
+    await this.fetchPokemon();
+}
+
   handleIncrement = async (e) => {
     await this.setState({
-      pageNumber: this.state.pageNumber,
+      pageNumber: this.state.pageNumber + 1,
     })
     await this.fetchPokemon();
 }
@@ -80,11 +91,14 @@ export default class ListPage extends React.Component {
 
         <SearchBar 
         handleSubmit={this.handleSubmit} handleChange={this.handleChange} pokeData={this.state.pokeData} />
-
-        {/* <button onClick={() => {
-          this.handleIncrement
-        }}></button> */}
-
+        
+        <div className="page-nav">
+          <button onClick={this.handleDecrement}>Previous</button>
+          <button onClick={this.handleIncrement}>Next</button>
+          <br />
+          <p>Page {this.state.pageNumber} of {Math.ceil(this.state.count / 20)} </p>
+        </div>
+        
         <PokeList 
         pokeData={this.state.pokeData} 
         submitProp={this.state.submit} />
