@@ -76,3 +76,11 @@ h1 {
   align-items: center;
   margin: 10px;
 }
+
+.shape, .height, .weight, .ability, .hidden-ability, .base-experience {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  margin: 2px;
+}

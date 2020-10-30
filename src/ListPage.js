@@ -16,28 +16,36 @@ export default class ListPage extends React.Component {
       pokeData: [],
   }
   
-    // fetchPokemon 
-
+  fetchPokemon = async () => {
+    console.log(this.state.change)
+      const response = await fetch.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.change}&sort=${this.state.ability}&direction=${this.state.hidden}`);
+      // if one state is empty, it will just ignore or show all
+      // console.log(response.body.results)
+      this.setState({ pokeData: response.body.results });
+  }
 
   componentDidMount = async () => {
-    const response = await fetch.get('https://alchemy-pokedex.herokuapp.com/api/pokedex');
-    console.log(response.body.results)
-    this.setState({ pokeData: response.body.results });
+    this.fetchPokemon();
   }
 
   handleChangeAbility = (e) => {
       this.setState({
         ability: e.target.value,
       })
+      console.log(e.target.value);
+
   }
 
   handleChangeHidden = (e) => {
       this.setState({
         hidden: e.target.value,
       })
+      console.log(e.target.value);
+
   }
 
   handleSubmit = (e) => {
+    this.fetchPokemon();
     e.preventDefault()  
     this.setState({
         submit: this.state.change,
@@ -50,6 +58,7 @@ export default class ListPage extends React.Component {
       this.setState({
         change: e.target.value,
       })
+      console.log(e.target.value);
   }
 
   render() {
@@ -76,12 +85,3 @@ export default class ListPage extends React.Component {
     )
   }
 }
-
-// changeProp={this.state.change}
-
-// https://alchemy-pokedex.herokuapp.com/api/pokedex?${this.state.category}=${this.state.search}&sort=${this.state.sort}
-
-// Styled ListPage Component (with react-router) that fetches characters by name on load (use componentDidMount)
-// Add a fetchPokemon method to your List page. It should use state to make the correct fetch, based on the user's current selections.
-// Fetch pokemon on Search (should sort and filter correctly, using the API)
-// Add loading spinner to List page (on mount and on search)
