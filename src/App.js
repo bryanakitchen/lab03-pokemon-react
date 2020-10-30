@@ -26,7 +26,7 @@ export default class App extends Component {
                             render={(routerProps) => <ListPage {...routerProps} />} 
                         />
                         <Route 
-                            path="/pokemon/:pokemon" 
+                            path="/pokemon/:pokemonProp" 
                             exact
                             render={(routerProps) => <PokemonDetail {...routerProps} />} 
                         />

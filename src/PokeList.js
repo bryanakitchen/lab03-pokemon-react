@@ -1,5 +1,6 @@
 import React from 'react'
 import PokeItem from './PokeItem.js';
+import { Link } from 'react-router-dom';
 
 export default class PokeList extends React.Component {
     render() {
@@ -13,8 +14,10 @@ export default class PokeList extends React.Component {
                     // else show me the money
                     <div className="group"> 
                     {
-                    this.props.pokeData.map(pokemon => {
-                    return <PokeItem 
+                    this.props.pokeData.map(pokemon => 
+                    { return (
+                    <Link to={`pokemon/${pokemon.pokemon}`} >   
+                    <PokeItem 
                     name={pokemon.pokemon} 
                     url={pokemon.url_image}
                     baseExperience={pokemon.base_ability}
@@ -23,6 +26,7 @@ export default class PokeList extends React.Component {
                     shape={pokemon.shape}
                     height={pokemon.height}
                     weight={pokemon.weight} />
+                    </Link>)
                     })
                     }
                     </div>
