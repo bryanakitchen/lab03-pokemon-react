@@ -9,9 +9,12 @@ export default class PokeItem extends React.Component {
             <div className="unit">
                 <h3 className="name">{this.props.name}</h3>
                 <img className="picture" src={this.props.url} alt={this.props.name} ></img>
+                <p className="base-experience">{this.props.baseExperience}</p>
                 <p className="ability">Ability: {this.props.ability}</p>
                 <p className="hidden-ability">Hidden Ability: {this.props.hidden}</p>
                 <p className="shape">Shape: {this.props.shape}</p>
+                <p className="height">Height: {this.props.height}</p>
+                <p className="weight">Weight: {this.props.weight}</p>
             </div>
         )
     }
