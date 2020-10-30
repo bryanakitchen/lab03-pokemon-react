@@ -7,7 +7,7 @@ import SearchBar from './SearchBar.js';
 import { Link } from 'react-router-dom';
 import fetch from 'superagent';
 
-export default class ListPage extends React.Component {
+export default class PokemonDetail extends React.Component {
   state = {
       characteristic: '',
       order: '',
@@ -64,7 +64,8 @@ export default class ListPage extends React.Component {
         <Header />
         <Link to="/" className="links" >Home</Link>
         <Link to="/Search" className="links" >Search Page</Link>
-
+        <Link to="/pokemon/:pokemon" className="links" >Detail Page</Link>
+        
         <Sort 
         handleChar={this.handleCharPoke} 
         handleOrder={this.handleOrderPoke} />

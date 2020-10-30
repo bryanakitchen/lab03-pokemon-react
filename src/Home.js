@@ -9,6 +9,7 @@ export default class Home extends Component {
                 <Header />
                 <Link to="/" className="links" >Home</Link>
                 <Link to="/Search" className="links" >Search Page</Link>
+                <Link to="/pokemon/:pokemon" className="links" >Detail Page</Link>
                 <p>This is my home page. Wee!</p>
             </div>
         )
