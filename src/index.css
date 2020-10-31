@@ -84,3 +84,28 @@ h1 {
   font-size: 14px;
   margin: 2px;
 }
+
+.page-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+
+button {
+  background-color: #FFDE00;
+  color: #3B4CCA;
+}
+
+button:hover {
+  background-color: #B3A125;
+  color: #3B4CCA;
+}
+
+button:disabled {
+  background-color: gray;
+}
+
+a:link {
+  text-decoration: none;
+}
