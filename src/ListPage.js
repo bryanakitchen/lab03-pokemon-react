@@ -93,8 +93,8 @@ export default class ListPage extends React.Component {
         handleSubmit={this.handleSubmit} handleChange={this.handleChange} pokeData={this.state.pokeData} />
         
         <div className="page-nav">
-          <button onClick={this.handleDecrement}>Previous</button>
-          <button onClick={this.handleIncrement}>Next</button>
+          <button onClick={this.handleDecrement} disabled={this.state.pageNumber === 1}>Previous</button>
+          <button onClick={this.handleIncrement} disabed={this.state.pageNumber === Math.ceil(this.state.count / 20)}>Next</button>
           <br />
           <p>Page {this.state.pageNumber} of {Math.ceil(this.state.count / 20)} </p>
         </div>
